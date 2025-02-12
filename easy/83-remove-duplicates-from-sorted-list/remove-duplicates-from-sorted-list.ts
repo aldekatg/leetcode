@@ -11,15 +11,9 @@
  */
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-  let current = head; // Начинаем с головы списка
-
-  while (current !== null && current.next !== null) {
-    if (current.val === current.next.val) {
-      current.next = current.next.next; // Удаляем дубликат
-    } else {
-      current = current.next; // Двигаемся дальше
-    }
-  }
-
-  return head;
+  if (!head || !head.next) return head;
+  
+  head.next = deleteDuplicates(head.next);
+  
+  return head.val === head.next.val ? head.next : head;
 }
