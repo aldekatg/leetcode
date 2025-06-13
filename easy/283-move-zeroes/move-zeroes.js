@@ -5,19 +5,14 @@
 var moveZeroes = function(nums) {
   if (nums.length === 1 ) return nums
 
-  let write = 0
-  let read = 0
+  let left = 0
+  let right = 0
 
-  for (read; read < nums.length; read++) {
-    if (nums[read] !== 0) {
-      nums[write] = nums[read]
-      write++
+  for (right; right < nums.length; right++) {
+    if (nums[right] !== 0) {
+        [nums[right], nums[left]] = [nums[left], nums[right]]
+        left++
     }
   }
-
-  for (let i = write; i < nums.length; i++) {
-    nums[i] = 0;
-  }
-
   return nums
 };
