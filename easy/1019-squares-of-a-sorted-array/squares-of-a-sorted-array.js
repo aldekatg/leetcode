@@ -9,10 +9,10 @@ var sortedSquares = function (nums) {
 
     while (right >= left) {
         if (Math.abs(nums[right]) > Math.abs(nums[left])) {
-            result.unshift(Math.abs(nums[right] * nums[right]))
+            result.unshift(nums[right] ** 2)
             right--
         } else {
-            result.unshift(Math.abs(nums[left] * nums[left]))
+            result.unshift(nums[left] ** 2)
             left++
         }
     }
