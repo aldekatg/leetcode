@@ -1,36 +1,35 @@
-/**
- * @param {number[]} nums
- * @return {number[][]}
- */
-function threeSum(nums) {
-  const result = []
-  nums.sort((a, b) => a - b)
 
-  for (let i = 0; i < nums.length - 2; i++) {
-    if (i > 0 && nums[i] === nums[i - 1]) continue // пропуск дубликатов
+var threeSum = function(nums) {
+    const result = []
+    nums.sort((a,b) => a - b)
 
-    let left = i + 1
-    let right = nums.length - 1
+    for (let i = 0; i <= nums.length - 2; i++) {
+        if (i > 0 && nums[i] === nums[i - 1]) continue // пропускаем предыдущие дубликаты 
 
-    while (left < right) {
-      const sum = nums[i] + nums[left] + nums[right]
+        let left = i + 1
+        let right = nums.length - 1
 
-      if (sum === 0) {
-        result.push([nums[i], nums[left], nums[right]])
+        while (left < right) {
+            const sum = nums[i] + nums[left] + nums[right]
 
-        // Пропускаем одинаковые значения
-        while (left < right && nums[left] === nums[left + 1]) left++
-        while (left < right && nums[right] === nums[right - 1]) right--
+            if (sum === 0) {
+                while (left < right && nums[left] === nums[left+1]) left++
+                while (left < right && nums[right] === nums[right-1]) right--
+                
 
-        left++
-        right--
-      } else if (sum < 0) {
-        left++
-      } else {
-        right--
-      }
+                result.push([nums[i], nums[left], nums[right]])
+
+                left++
+                right--
+            } else if (sum < 0) {
+                left++
+            } else {
+                right--
+            }
+        }
+
     }
-  }
+    return result
+ 
 
-  return result
-}
+};
